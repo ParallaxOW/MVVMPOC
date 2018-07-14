@@ -16,18 +16,17 @@ namespace Acosta.Xam.POC
     {
         public override void Initialize()
         {
-            base.Initialize();
+            //CreatableTypes()
+            //    .EndingWith("Service")
+            //    .AsInterfaces()
+            //    .RegisterAsLazySingleton();
 
-            CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
+            Mvx.RegisterType<IDataRetrievalService, DataRetrievalService>();
+            Mvx.RegisterType<IConnectivityService, ConnectivityService>();
+            Mvx.RegisterType<IProductService, ProductService>();
+            Mvx.RegisterType<IEventService, EventService>();
 
-            //Mvx.RegisterType<IDataRetrievalService, DataRetrievalService>();
-            //Mvx.RegisterType<IConnectivityService, ConnectivityService>();
-
-            RegisterAppStart<SplashViewModel>();
-            
+            //RegisterAppStart<SplashViewModel>();
         }
     }
 }

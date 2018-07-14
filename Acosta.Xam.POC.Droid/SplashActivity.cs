@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Widget;
 
 using Acosta.Xam.POC.ViewModels;
+using MvvmCross.Platforms.Android.Core;
 
 
 namespace Acosta.Xam.POC.Droid.Activities
