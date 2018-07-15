@@ -15,5 +15,7 @@ namespace Acosta.Xam.POC
 
         public const string APP_NAME = "Engage";
         public const string APP_SUB_NAME = "Proof of Concept";
+        public const string ERROR_BUTTON_TEXT = "Retry";
+        public const string PROGRESS_BAR_TITLE = "Syncing";
     }
 }

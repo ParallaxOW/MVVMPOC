@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="200dp"
+        android:gravity="center_horizontal"
+        local:MvxBind="Text TitleText"
+        android:textColor="@color/titleText"
+        android:id="@+id/title_text" />
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_below="@id/title_text"
+        android:gravity="center_horizontal"
+        local:MvxBind="Text SubTitleText"
+        android:textColor="@color/subTitleText"
+        android:paddingBottom="150dip" />
+    <RelativeLayout
+        android:id="@+id/rlProgressPane"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/subtitle_text"
+        local:MvxBind="Visibility Visibility(IsConnected)">
+        <TextView
+            android:id="@+id/progressBarText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:gravity="center_horizontal"
+            local:MvxBind="Text ProgressBarTitle"
+            android:textColor="@color/subTitleText"
+            android:paddingBottom="15sp" />
+        <ProgressBar
+            android:id="@+id/loadingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75sp"
+            android:layout_marginRight="75sp"
+            android:indeterminate="true"
+            android:layout_alignParentBottom="true"
+            local:MvxBind="ProgressBarProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:backgroundTint="@color/progressBackground"
+            android:foregroundTint="@color/progressForeground" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rlErrorPane"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:background="@color/errorPaneBackground"
+        android:layout_alignParentBottom="true"
+        local:MvxBind="Visibility Visibility(!IsConnected)">
+        <TextView
+            android:id="@+id/errorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_below="@id/subtitle_text"
+            android:gravity="center_horizontal"
+            local:MvxBind="Text ErrorMessage"
+            android:textColor="@color/errorText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+        <Button
+            android:id="@+id/btnRetry"
+            android:text="Retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/errorPaneBackground"
+            android:textColor="@color/errorText" />
+    </RelativeLayout>
+</RelativeLayout>

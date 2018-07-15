@@ -14,10 +14,12 @@ using Android.Views;
 using Android.Widget;
 
 using Acosta.Xam.POC;
+using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace Acosta.Xam.POC.Droid
 {
-    public class MainApplication : MvxAndroidApplication<MvxAndroidSetup<App>, App>
+    [Application]
+    public class MainApplication : MvxAppCompatApplication<MvxAppCompatSetup<App>, App>
     {
         public MainApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {

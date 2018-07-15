@@ -3,4 +3,15 @@
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1B3147</color>
     <color name="colorAccent">#3498db</color>
+  
+    <color name="titleText">#1E2936</color>
+    <color name="subTitleText">#80959F</color>
+  
+    <color name="progressForeground">#6E8691</color>
+    <color name="progressBackground">#D9DEE5</color>
+  
+    <color name="errorPaneBackground">#FF0000</color>
+    <color name="errorText">#FFFFFF</color>
+
+    <color name="green">#00FF00</color>
 </resources>

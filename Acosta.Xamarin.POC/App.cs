@@ -26,7 +26,7 @@ namespace Acosta.Xam.POC
             Mvx.RegisterType<IProductService, ProductService>();
             Mvx.RegisterType<IEventService, EventService>();
 
-            //RegisterAppStart<SplashViewModel>();
+            RegisterAppStart<LoadingScreenViewModel>();
         }
     }
 }

@@ -1,16 +1,10 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
-namespace TipCalc.Core.ViewModels
+namespace Acosta.Xam.POC.ViewModels
 {
-    public class HomeViewModel : MvxViewModel
+    public class ProductsViewModel : MvxViewModel
     {
-        public IMvxCommand ResetTextCommand => new MvxCommand(ResetText);
-        private void ResetText()
-        {
-            Text = "Hello MvvmCross";
-        }
-
         private string _text = "Hello MvvmCross";
         public string Text
         {
