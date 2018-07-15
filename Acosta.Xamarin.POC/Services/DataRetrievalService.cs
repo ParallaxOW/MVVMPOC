@@ -25,9 +25,7 @@ namespace Acosta.Xam.POC.Services
 
         public async Task<List<Event>> GetAllEvents()
         {
-            List<Event> result = new List<Event>();
-            
-            Thread.Sleep(5000);
+            List<Event> result = BuildTestEvents();
             //var response = await client.GetStringAsync(Constants.EVENT_ENDPOINT);
             //var result = JsonConvert.DeserializeObject<List<Event>>(response);
             return result;
@@ -36,7 +34,6 @@ namespace Acosta.Xam.POC.Services
         public async Task<List<Product>> GetAllProducts()
         {
             List<Product> result = BuildTestProducts();
-            Thread.Sleep(5000);
             //var response = await client.GetStringAsync(Constants.PRODUCT_ENDPOINT);
             //var result = JsonConvert.DeserializeObject<List<Product>>(response);
             return result;
@@ -46,7 +43,7 @@ namespace Acosta.Xam.POC.Services
         {
             List<Product> result = new List<Product>();
 
-            for (int i = 0; i >= 50; i++)
+            for (int i = 0; i <= 50; i++)
             {
                 string name = string.Format("Product-{0}", i);
                 result.Add(new Product() { Id = i, Name = name });
@@ -59,7 +56,7 @@ namespace Acosta.Xam.POC.Services
         {
             List<Event> result = new List<Event>();
 
-            for (int i = 0; i >= 50; i++)
+            for (int i = 0; i <= 50; i++)
             {
                 string name = string.Format("Event-{0}", i);
                 result.Add(new Event() { Id = i, Name = name });

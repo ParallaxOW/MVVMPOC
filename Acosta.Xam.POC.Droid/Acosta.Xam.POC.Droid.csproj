@@ -56,6 +56,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\LoadingActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -130,6 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\loading_screen.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\splashscreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

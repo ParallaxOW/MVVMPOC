@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Acosta.Xam.POC.Droid</string>
     <string name="action_settings">Settings</string>
+
+    <string name="titleText">Engage</string>
+    <string name="subtitleText">Proof of Concept</string>
 </resources>

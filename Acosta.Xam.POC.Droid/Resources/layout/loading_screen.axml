@@ -45,9 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="75sp"
             android:layout_marginRight="75sp"
-            android:indeterminate="true"
+            android:indeterminate="false"
             android:layout_alignParentBottom="true"
-            local:MvxBind="ProgressBarProgress"
+            local:MvxBind="Progress ProgressBarProgress"
             style="?android:attr/progressBarStyleHorizontal"
             android:backgroundTint="@color/progressBackground"
             android:foregroundTint="@color/progressForeground" />

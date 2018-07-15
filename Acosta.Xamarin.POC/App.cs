@@ -9,6 +9,8 @@ using System.Text;
 using Acosta.Xam.POC.IServices;
 using Acosta.Xam.POC.Services;
 using Acosta.Xam.POC.ViewModels;
+using MvvmCross.Navigation;
+using MvvmCross.Exceptions;
 
 namespace Acosta.Xam.POC
 {
@@ -26,7 +28,27 @@ namespace Acosta.Xam.POC
             Mvx.RegisterType<IProductService, ProductService>();
             Mvx.RegisterType<IEventService, EventService>();
 
-            RegisterAppStart<LoadingScreenViewModel>();
+            RegisterCustomAppStart<CustomMvxAppStart<LoadingScreenViewModel>>();
+        }
+    }
+
+    public class CustomMvxAppStart<TViewModel> : MvxAppStart<TViewModel> where TViewModel : IMvxViewModel
+    {
+        public CustomMvxAppStart(IMvxApplication application, IMvxNavigationService navigationService) : base(application, navigationService)
+        {
+
+        }
+
+        protected override void NavigateToFirstViewModel(object hint = null)
+        {
+            try
+            {
+                NavigationService.Navigate<TViewModel>();
+            }
+            catch (Exception exc)
+            {
+                throw exc.MvxWrap("Problem navigating to ViewModel {0}", typeof(TViewModel).Name);  
+            }
         }
     }
 }
