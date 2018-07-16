@@ -6,9 +6,9 @@ namespace Acosta.Xam.POC
 {
     public static class Constants
     {
-        public const string BASE_ADDRESS = @"http://www.acosta.com";
-        public const string PRODUCT_ENDPOINT = @"";
-        public const string EVENT_ENDPOINT = @"";
+        public const string BASE_ADDRESS = @"http://escmobile.com/engage";
+        public const string PRODUCT_ENDPOINT = @"engage_products.json";
+        public const string EVENT_ENDPOINT = @"engage_events.json";
 
         public const string CONNECT_INTERNET_MSG = "Please connect to the internet.";
         public const string INITIAL_LOAD_ERROR = "We couldn't load that.";

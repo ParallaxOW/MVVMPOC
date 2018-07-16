@@ -3,12 +3,13 @@ using Android.OS;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.Platforms.Android.Views;
 using Acosta.Xam.POC.ViewModels;
+using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace Acosta.Xam.POC.Droid.Views
 {
     
     [Activity(Label = "ProductsView")]
-    public class ProductsView : MvxActivity<ProductsViewModel>
+    public class ProductsView : MvxAppCompatActivity<ProductsViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

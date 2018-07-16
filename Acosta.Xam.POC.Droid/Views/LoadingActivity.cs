@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Acosta.Xam.POC.Droid.Views
 {
-    [Activity(Theme = "@style/Theme.LoadingScreen", NoHistory = true)]
+    [Activity(Theme = "@style/Theme.LoadingScreen", NoHistory = true, MainLauncher = true)]
     public class LoadingActivity : MvxAppCompatActivity<LoadingScreenViewModel>
     {
         Button btnRetry;
@@ -29,10 +29,10 @@ namespace Acosta.Xam.POC.Droid.Views
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.loading_screen);
-
+		
             btnRetry = FindViewById<Button>(Resource.Id.btnRetry);
             btnRetry.Click += delegate { ViewModel.CheckConnectivity(); };
         }
-        
+
     }
 }

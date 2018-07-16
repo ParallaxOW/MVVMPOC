@@ -45,8 +45,7 @@ namespace Acosta.Xam.POC.ViewModels
 
         public override async Task Initialize()
         {
-            await base.Initialize();
-
+            
             this.TitleText = Constants.APP_NAME;
             this.SubTitleText = Constants.APP_SUB_NAME;
             this.ErrorButtonText = Constants.ERROR_BUTTON_TEXT;
@@ -56,12 +55,16 @@ namespace Acosta.Xam.POC.ViewModels
 
             this.ErrorMessage = (!IsConnected ? Constants.CONNECT_INTERNET_MSG : String.Empty);
 
+        }
+
+        public async override void ViewAppeared()
+        {
             Products = ProductService.GetAllProducts();
             Events = EventService.GetAllEvents();
-
+			
             ProductsLoaded = (ProductCount > 0);
             EventsLoaded = (EventCount > 0);
-
+			
             //if we're connected lets check for data
             if (IsConnected)
             {
@@ -75,40 +78,14 @@ namespace Acosta.Xam.POC.ViewModels
                 else if (ProductsLoaded && EventsLoaded)
                 {
                     //everything's loaded, lets ski-daddle!
-                    await NavigateToProductsScreen();
+                    //await _navigationService.Navigate<ProductsViewModel>();
+                    //await _navigationService.Close(this);
+                    ProgressBarProgress = 100;
+                    ProgressBarTitle = "Data Loaded!";
                 }
             }
+            base.ViewAppeared();
         }
-
-        //public override void ViewAppeared()
-        //{
-        //    //base.ViewAppeared();
-
-        //    this.ErrorMessage = (!IsConnected ? Constants.CONNECT_INTERNET_MSG : String.Empty);
-
-        //    Products = ProductService.GetAllProducts();
-        //    Events = EventService.GetAllEvents();
-
-        //    ProductsLoaded = (ProductCount > 0);
-        //    EventsLoaded = (EventCount > 0);
-
-        //    //if we're connected lets check for data
-        //    if (IsConnected)
-        //    {
-        //        //if either the products or events aren't loaded, lets go get them.
-        //        if (!ProductsLoaded || !EventsLoaded)
-        //        {
-        //            //something's not loaded, lets go get it.  
-        //            //navigation will happen at the bottom of this method.
-        //            Task.Run(async () => { await LoadData(); });
-        //        }
-        //        else if (ProductsLoaded && EventsLoaded)
-        //        {
-        //            //everything's loaded, lets ski-daddle!
-        //            Task.Run(async () => { await NavigateToProductsScreen(); });
-        //        }
-        //    }
-        //}
 
         #endregion
 
@@ -390,22 +367,19 @@ namespace Acosta.Xam.POC.ViewModels
                 {
                     if (Products == null) Products = new List<Product>();
                     
-                    var retrievedProducts = await DataRetrievalService.GetAllProducts();
-                    ProgressBarProgress = 15;
+                    var productData = await DataRetrievalService.GetProductData();
 
                     //uncomment to pitch error here
                     //int i = 0;
                     //int text = 15 / i;
 
-                    var numProducts = ProductService.SaveProducts(retrievedProducts);
-                    ProgressBarProgress = 35;
+                    var numProducts = ProductService.SaveProducts(productData.data);
 
                     Products = ProductService.GetAllProducts();
-                    ProgressBarProgress = 50;
 
                     ProductsLoaded = true;
                 }
-                catch (Exception exc)
+                catch
                 {
                     //if we're in error, set the message, isnoterror and bail, we can't do any more.
                     
@@ -421,22 +395,19 @@ namespace Acosta.Xam.POC.ViewModels
                 {
                     if (Events == null) Events = new List<Event>();
 
-                    var retrievedEvents = await DataRetrievalService.GetAllEvents();
-                    ProgressBarProgress = 65;
+                    var eventData = await DataRetrievalService.GetEventData();
 
                     //uncomment to pitch error here
                     //int i = 0;
                     //int text = 15 / i;
 
-                    var numEvents = EventService.SaveEvents(retrievedEvents);
-                    ProgressBarProgress = 80;
+                    var numEvents = EventService.SaveEvents(eventData.data);
 
                     Events = EventService.GetAllEvents();
-                    ProgressBarProgress = 100;
 
                     EventsLoaded = true;
                 }
-                catch(Exception exc)
+                catch
                 {
                     //if we're in error, set the message, isnoterror and bail, we can't do any more.
                     ErrorMessage = "We couldn't load that.";
@@ -445,8 +416,7 @@ namespace Acosta.Xam.POC.ViewModels
                 }
             }
 
-            //if we get here, everything loaded successfully, let's navigate.
-            await NavigateToProductsScreen();
+
         }
 
         #endregion

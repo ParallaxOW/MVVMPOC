@@ -1,5 +1,6 @@
 ﻿using Acosta.Xam.POC.Core;
 using Acosta.Xam.POC.IServices;
+using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -14,31 +15,28 @@ namespace Acosta.Xam.POC.ViewModels
         private readonly IEventService _eventService;
         private readonly IProductService _productService;
 
-        //navigation service.
-        private readonly IMvxNavigationService _navigationService;
-
         #endregion
 
         #region startup
 
         public ProductsViewModel(IEventService eventService,
-                                IMvxNavigationService navigationService,
+                                
                                 IProductService productService)
         {
             _eventService = eventService;
             _productService = productService;
 
-            _navigationService = navigationService;
         }
 
         public override async Task Initialize()
         {
-            await base.Initialize();
             var products = _productService.GetAllProducts();
             var events = _eventService.GetAllEvents();
 
             Products = new MvxObservableCollection<Product>(products);
             Events = new MvxObservableCollection<Event>(events);
+
+
         }
 
         #endregion 
