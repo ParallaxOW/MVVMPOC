@@ -11,7 +11,7 @@ namespace Acosta.Xam.POC.Core
         public string barcode { get; set; }
         public string category { get; set; }
         public float lat { get; set; }
-        public float lon { get; set; }
+        public float lng { get; set; }
         public string client { get; set; }
         public string brand { get; set; }
         public string unit_size { get; set; }

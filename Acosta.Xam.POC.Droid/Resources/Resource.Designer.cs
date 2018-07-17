@@ -5138,44 +5138,44 @@ namespace Acosta.Xam.POC.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0d0052
-			public const int abc_background_cache_hint_selector_material_dark = 2131558482;
-			
 			// aapt resource value: 0x7f0d0053
-			public const int abc_background_cache_hint_selector_material_light = 2131558483;
+			public const int abc_background_cache_hint_selector_material_dark = 2131558483;
 			
 			// aapt resource value: 0x7f0d0054
-			public const int abc_btn_colored_borderless_text_material = 2131558484;
+			public const int abc_background_cache_hint_selector_material_light = 2131558484;
 			
 			// aapt resource value: 0x7f0d0055
-			public const int abc_btn_colored_text_material = 2131558485;
+			public const int abc_btn_colored_borderless_text_material = 2131558485;
 			
 			// aapt resource value: 0x7f0d0056
-			public const int abc_color_highlight_material = 2131558486;
+			public const int abc_btn_colored_text_material = 2131558486;
 			
 			// aapt resource value: 0x7f0d0057
-			public const int abc_hint_foreground_material_dark = 2131558487;
+			public const int abc_color_highlight_material = 2131558487;
 			
 			// aapt resource value: 0x7f0d0058
-			public const int abc_hint_foreground_material_light = 2131558488;
+			public const int abc_hint_foreground_material_dark = 2131558488;
+			
+			// aapt resource value: 0x7f0d0059
+			public const int abc_hint_foreground_material_light = 2131558489;
 			
 			// aapt resource value: 0x7f0d0000
 			public const int abc_input_method_navigation_guard = 2131558400;
 			
-			// aapt resource value: 0x7f0d0059
-			public const int abc_primary_text_disable_only_material_dark = 2131558489;
-			
 			// aapt resource value: 0x7f0d005a
-			public const int abc_primary_text_disable_only_material_light = 2131558490;
+			public const int abc_primary_text_disable_only_material_dark = 2131558490;
 			
 			// aapt resource value: 0x7f0d005b
-			public const int abc_primary_text_material_dark = 2131558491;
+			public const int abc_primary_text_disable_only_material_light = 2131558491;
 			
 			// aapt resource value: 0x7f0d005c
-			public const int abc_primary_text_material_light = 2131558492;
+			public const int abc_primary_text_material_dark = 2131558492;
 			
 			// aapt resource value: 0x7f0d005d
-			public const int abc_search_url_text = 2131558493;
+			public const int abc_primary_text_material_light = 2131558493;
+			
+			// aapt resource value: 0x7f0d005e
+			public const int abc_search_url_text = 2131558494;
 			
 			// aapt resource value: 0x7f0d0001
 			public const int abc_search_url_text_normal = 2131558401;
@@ -5186,29 +5186,29 @@ namespace Acosta.Xam.POC.Droid
 			// aapt resource value: 0x7f0d0003
 			public const int abc_search_url_text_selected = 2131558403;
 			
-			// aapt resource value: 0x7f0d005e
-			public const int abc_secondary_text_material_dark = 2131558494;
-			
 			// aapt resource value: 0x7f0d005f
-			public const int abc_secondary_text_material_light = 2131558495;
+			public const int abc_secondary_text_material_dark = 2131558495;
 			
 			// aapt resource value: 0x7f0d0060
-			public const int abc_tint_btn_checkable = 2131558496;
+			public const int abc_secondary_text_material_light = 2131558496;
 			
 			// aapt resource value: 0x7f0d0061
-			public const int abc_tint_default = 2131558497;
+			public const int abc_tint_btn_checkable = 2131558497;
 			
 			// aapt resource value: 0x7f0d0062
-			public const int abc_tint_edittext = 2131558498;
+			public const int abc_tint_default = 2131558498;
 			
 			// aapt resource value: 0x7f0d0063
-			public const int abc_tint_seek_thumb = 2131558499;
+			public const int abc_tint_edittext = 2131558499;
 			
 			// aapt resource value: 0x7f0d0064
-			public const int abc_tint_spinner = 2131558500;
+			public const int abc_tint_seek_thumb = 2131558500;
 			
 			// aapt resource value: 0x7f0d0065
-			public const int abc_tint_switch_track = 2131558501;
+			public const int abc_tint_spinner = 2131558501;
+			
+			// aapt resource value: 0x7f0d0066
+			public const int abc_tint_switch_track = 2131558502;
 			
 			// aapt resource value: 0x7f0d0004
 			public const int accent_material_dark = 2131558404;
@@ -5227,6 +5227,9 @@ namespace Acosta.Xam.POC.Droid
 			
 			// aapt resource value: 0x7f0d0009
 			public const int background_material_light = 2131558409;
+			
+			// aapt resource value: 0x7f0d0051
+			public const int blue_arrow = 2131558481;
 			
 			// aapt resource value: 0x7f0d000a
 			public const int bright_foreground_disabled_material_dark = 2131558410;
@@ -5264,8 +5267,8 @@ namespace Acosta.Xam.POC.Droid
 			// aapt resource value: 0x7f0d003c
 			public const int design_bottom_navigation_shadow_color = 2131558460;
 			
-			// aapt resource value: 0x7f0d0066
-			public const int design_error = 2131558502;
+			// aapt resource value: 0x7f0d0067
+			public const int design_error = 2131558503;
 			
 			// aapt resource value: 0x7f0d003d
 			public const int design_fab_shadow_end_color = 2131558461;
@@ -5291,8 +5294,8 @@ namespace Acosta.Xam.POC.Droid
 			// aapt resource value: 0x7f0d0044
 			public const int design_snackbar_background_color = 2131558468;
 			
-			// aapt resource value: 0x7f0d0067
-			public const int design_tint_password_toggle = 2131558503;
+			// aapt resource value: 0x7f0d0068
+			public const int design_tint_password_toggle = 2131558504;
 			
 			// aapt resource value: 0x7f0d0012
 			public const int dim_foreground_disabled_material_dark = 2131558418;
@@ -5330,8 +5333,8 @@ namespace Acosta.Xam.POC.Droid
 			// aapt resource value: 0x7f0d001a
 			public const int highlighted_text_material_light = 2131558426;
 			
-			// aapt resource value: 0x7f0d0051
-			public const int ic_launcher_background = 2131558481;
+			// aapt resource value: 0x7f0d0052
+			public const int ic_launcher_background = 2131558482;
 			
 			// aapt resource value: 0x7f0d001b
 			public const int material_blue_grey_800 = 2131558427;
@@ -5435,11 +5438,11 @@ namespace Acosta.Xam.POC.Droid
 			// aapt resource value: 0x7f0d0036
 			public const int switch_thumb_disabled_material_light = 2131558454;
 			
-			// aapt resource value: 0x7f0d0068
-			public const int switch_thumb_material_dark = 2131558504;
-			
 			// aapt resource value: 0x7f0d0069
-			public const int switch_thumb_material_light = 2131558505;
+			public const int switch_thumb_material_dark = 2131558505;
+			
+			// aapt resource value: 0x7f0d006a
+			public const int switch_thumb_material_light = 2131558506;
 			
 			// aapt resource value: 0x7f0d0037
 			public const int switch_thumb_normal_material_dark = 2131558455;
@@ -6197,91 +6200,94 @@ namespace Acosta.Xam.POC.Droid
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int avd_hide_password = 2130837587;
-			
-			// aapt resource value: 0x7f02006a
-			public const int avd_hide_password_1 = 2130837610;
-			
-			// aapt resource value: 0x7f02006b
-			public const int avd_hide_password_2 = 2130837611;
-			
-			// aapt resource value: 0x7f02006c
-			public const int avd_hide_password_3 = 2130837612;
+			public const int arrow = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int avd_show_password = 2130837588;
+			public const int avd_hide_password = 2130837588;
+			
+			// aapt resource value: 0x7f02006b
+			public const int avd_hide_password_1 = 2130837611;
+			
+			// aapt resource value: 0x7f02006c
+			public const int avd_hide_password_2 = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int avd_show_password_1 = 2130837613;
-			
-			// aapt resource value: 0x7f02006e
-			public const int avd_show_password_2 = 2130837614;
-			
-			// aapt resource value: 0x7f02006f
-			public const int avd_show_password_3 = 2130837615;
+			public const int avd_hide_password_3 = 2130837613;
 			
 			// aapt resource value: 0x7f020055
-			public const int design_bottom_navigation_item_background = 2130837589;
+			public const int avd_show_password = 2130837589;
+			
+			// aapt resource value: 0x7f02006e
+			public const int avd_show_password_1 = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int avd_show_password_2 = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int avd_show_password_3 = 2130837616;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_fab_background = 2130837590;
+			public const int design_bottom_navigation_item_background = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_ic_visibility = 2130837591;
+			public const int design_fab_background = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility_off = 2130837592;
+			public const int design_ic_visibility = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_password_eye = 2130837593;
+			public const int design_ic_visibility_off = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_snackbar_background = 2130837594;
+			public const int design_password_eye = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int navigation_empty_icon = 2130837595;
+			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int notification_action_background = 2130837596;
+			public const int navigation_empty_icon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int notification_bg = 2130837597;
+			public const int notification_action_background = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int notification_bg_low = 2130837598;
+			public const int notification_bg = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_bg_low_normal = 2130837599;
+			public const int notification_bg_low = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg_low_pressed = 2130837600;
+			public const int notification_bg_low_normal = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_normal = 2130837601;
+			public const int notification_bg_low_pressed = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_normal_pressed = 2130837602;
+			public const int notification_bg_normal = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_icon_background = 2130837603;
-			
-			// aapt resource value: 0x7f020068
-			public const int notification_template_icon_bg = 2130837608;
-			
-			// aapt resource value: 0x7f020069
-			public const int notification_template_icon_low_bg = 2130837609;
+			public const int notification_bg_normal_pressed = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_tile_bg = 2130837604;
+			public const int notification_icon_background = 2130837604;
+			
+			// aapt resource value: 0x7f020069
+			public const int notification_template_icon_bg = 2130837609;
+			
+			// aapt resource value: 0x7f02006a
+			public const int notification_template_icon_low_bg = 2130837610;
 			
 			// aapt resource value: 0x7f020065
-			public const int notify_panel_notification_icon_bg = 2130837605;
+			public const int notification_tile_bg = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int tooltip_frame_dark = 2130837606;
+			public const int notify_panel_notification_icon_bg = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int tooltip_frame_light = 2130837607;
+			public const int tooltip_frame_dark = 2130837607;
+			
+			// aapt resource value: 0x7f020068
+			public const int tooltip_frame_light = 2130837608;
 			
 			static Drawable()
 			{
@@ -7076,22 +7082,25 @@ namespace Acosta.Xam.POC.Droid
 			public const int notification_template_part_time = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int products_view = 2130968632;
+			public const int products_listitem = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int select_dialog_item_material = 2130968633;
+			public const int products_view = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_multichoice_material = 2130968634;
+			public const int select_dialog_item_material = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_singlechoice_material = 2130968635;
+			public const int select_dialog_multichoice_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int support_simple_spinner_dropdown_item = 2130968636;
+			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int tooltip = 2130968637;
+			public const int support_simple_spinner_dropdown_item = 2130968637;
+			
+			// aapt resource value: 0x7f04003e
+			public const int tooltip = 2130968638;
 			
 			static Layout()
 			{
@@ -7223,6 +7232,9 @@ namespace Acosta.Xam.POC.Droid
 			
 			// aapt resource value: 0x7f0a001e
 			public const int appbar_scrolling_view_behavior = 2131361822;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int arrow_descriptor = 2131361837;
 			
 			// aapt resource value: 0x7f0a001f
 			public const int bottom_sheet_behavior = 2131361823;

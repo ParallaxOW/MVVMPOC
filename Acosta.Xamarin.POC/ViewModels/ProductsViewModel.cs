@@ -12,18 +12,14 @@ namespace Acosta.Xam.POC.ViewModels
     {
         #region private_variables
         //object services
-        private readonly IEventService _eventService;
         private readonly IProductService _productService;
 
         #endregion
 
         #region startup
 
-        public ProductsViewModel(IEventService eventService,
-                                
-                                IProductService productService)
+        public ProductsViewModel(IProductService productService)
         {
-            _eventService = eventService;
             _productService = productService;
 
         }
@@ -31,11 +27,7 @@ namespace Acosta.Xam.POC.ViewModels
         public override async Task Initialize()
         {
             var products = _productService.GetAllProducts();
-            var events = _eventService.GetAllEvents();
-
             Products = new MvxObservableCollection<Product>(products);
-            Events = new MvxObservableCollection<Event>(events);
-
 
         }
 
@@ -43,12 +35,6 @@ namespace Acosta.Xam.POC.ViewModels
 
         #region bindable_properties
 
-        private string _text = "Hello MvvmCross";
-        public string Text
-        {
-            get { return _text; }
-            set { SetProperty(ref _text, value); }
-        }
 
         /// <summary>
         /// Product Count. Derived from Products (Products.Count)
@@ -56,29 +42,6 @@ namespace Acosta.Xam.POC.ViewModels
         public int ProductCount
         {
             get => _products.Count;
-        }
-
-        /// <summary>
-        /// Event Count. Derived from Events. (Events.Count)
-        /// </summary>
-        public int EventCount
-        {
-            get => _events.Count;
-        }
-
-        private MvxObservableCollection<Event> _events;
-        /// <summary>
-        /// Bindable List of events.
-        /// </summary>
-        public MvxObservableCollection<Event> Events
-        {
-            get => _events;
-            set
-            {
-                _events = value;
-                RaisePropertyChanged(() => Events);
-                RaisePropertyChanged(() => EventCount);
-            }
         }
 
         private MvxObservableCollection<Product> _products;
@@ -94,18 +57,6 @@ namespace Acosta.Xam.POC.ViewModels
                 RaisePropertyChanged(() => Products);
                 RaisePropertyChanged(() => ProductCount);
             }
-        }
-
-        private string _productLabelText;
-        public string ProductLabelText
-        {
-            get => "Product Count:";
-        }
-
-        private string _eventLabelText;
-        public string EventLabelText
-        {
-            get => "Event Count:";
         }
 
         #endregion

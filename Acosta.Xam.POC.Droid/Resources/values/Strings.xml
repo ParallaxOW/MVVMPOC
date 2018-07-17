@@ -4,4 +4,6 @@
 
     <string name="titleText">Engage</string>
     <string name="subtitleText">Proof of Concept</string>
+
+  <string name="arrow_descriptor">arrow</string>
 </resources>

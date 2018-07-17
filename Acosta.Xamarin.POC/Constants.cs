@@ -6,7 +6,7 @@ namespace Acosta.Xam.POC
 {
     public static class Constants
     {
-        public const string BASE_ADDRESS = @"http://escmobile.com/engage";
+        public const string BASE_ADDRESS = @"http://escmobile.com/engage/";
         public const string PRODUCT_ENDPOINT = @"engage_products.json";
         public const string EVENT_ENDPOINT = @"engage_events.json";
 

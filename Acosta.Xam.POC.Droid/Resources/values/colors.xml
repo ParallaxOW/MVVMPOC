@@ -14,4 +14,6 @@
     <color name="errorText">#FFFFFF</color>
 
     <color name="green">#00FF00</color>
+
+    <color name="blue_arrow">#3686EE</color>
 </resources>

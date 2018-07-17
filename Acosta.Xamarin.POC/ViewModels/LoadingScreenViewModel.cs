@@ -9,7 +9,6 @@ using Acosta.Xam.POC.IServices;
 using Acosta.Xam.POC.Services;
 using Acosta.Xam.POC.Core;
 
-
 namespace Acosta.Xam.POC.ViewModels
 {
     public class LoadingScreenViewModel : MvxViewModel
@@ -72,16 +71,83 @@ namespace Acosta.Xam.POC.ViewModels
                 if (!ProductsLoaded || !EventsLoaded)
                 {
                     //something's not loaded, lets go get it.  
-                    //navigation will happen at the bottom of this method.
-                    await LoadData();
+                    if (!ProductsLoaded)
+                    {
+                        ProgressBarTitle = "Retrieving Products...";
+                        try
+                        {
+                            if (Products == null) Products = new List<Product>();
+
+                           
+                            var productData = await DataRetrievalService.GetProductData();
+
+                            ProgressBarProgress = 25;
+                            //uncomment to pitch error here
+                            //int i = 0;
+                            //int text = 15 / i;
+                            ProgressBarTitle = "Saving Products...";
+                            var numProducts = ProductService.SaveProducts(productData.data);
+                            
+                            ProgressBarProgress = 40;
+                            Products = ProductService.GetAllProducts();
+                            ProductsLoaded = true;
+                        }
+                        catch
+                        {
+                            //if we're in error, set the message, isnoterror and bail, we can't do any more.
+
+                            ErrorMessage = "We couldn't load that.";
+                            IsNotError = false;
+                            return;
+                        }
+                    }
+                    ProgressBarTitle = "Products Loaded!";
+                    ProgressBarProgress = 50;
+
+
+                    if (!EventsLoaded)
+                    {
+                        ProgressBarTitle = "Retrieving Events...";
+                        try
+                        {
+                            if (Events == null) Events = new List<Event>();
+                            
+                            var eventData = await DataRetrievalService.GetEventData();
+                            
+                            ProgressBarProgress = 75;
+                            //uncomment to pitch error here
+                            //int i = 0;
+                            //int text = 15 / i;
+                            ProgressBarTitle = "Saving Events...";
+                            var numEvents = EventService.SaveEvents(eventData.data);
+                            
+                            ProgressBarProgress = 90;
+                            Events = EventService.GetAllEvents();
+                            EventsLoaded = true;
+                        }
+                        catch
+                        {
+                            //if we're in error, set the message, isnoterror and bail, we can't do any more.
+                            ErrorMessage = "We couldn't load that.";
+                            IsNotError = false;
+                            return;
+                        }
+                    }
+
+                    ProgressBarTitle = "Events Loaded!";
+                    ProgressBarProgress = 100;
+
+                    if (ProductsLoaded && EventsLoaded)
+                    {
+                        await _navigationService.Navigate<ProductsViewModel>();
+                    }
                 }
                 else if (ProductsLoaded && EventsLoaded)
                 {
                     //everything's loaded, lets ski-daddle!
-                    //await _navigationService.Navigate<ProductsViewModel>();
-                    //await _navigationService.Close(this);
                     ProgressBarProgress = 100;
                     ProgressBarTitle = "Data Loaded!";
+                    await _navigationService.Navigate<ProductsViewModel>();
                 }
             }
             base.ViewAppeared();
@@ -367,16 +433,16 @@ namespace Acosta.Xam.POC.ViewModels
                 {
                     if (Products == null) Products = new List<Product>();
                     
+                    ProgressBarTitle = "Retrieving Products...";
                     var productData = await DataRetrievalService.GetProductData();
-
+                    ProgressBarProgress = 25;
                     //uncomment to pitch error here
                     //int i = 0;
                     //int text = 15 / i;
-
+                    ProgressBarTitle = "Saving Products...";
                     var numProducts = ProductService.SaveProducts(productData.data);
-
+                    ProgressBarProgress = 40;
                     Products = ProductService.GetAllProducts();
-
                     ProductsLoaded = true;
                 }
                 catch
@@ -388,23 +454,25 @@ namespace Acosta.Xam.POC.ViewModels
                     return;
                 }
             }
+            ProgressBarTitle = "Products Loaded!";
+            ProgressBarProgress = 50;
+
 
             if (!EventsLoaded)
             {
                 try
                 {
                     if (Events == null) Events = new List<Event>();
-
+                    ProgressBarTitle = "Retrieving Events...";
                     var eventData = await DataRetrievalService.GetEventData();
-
+                    ProgressBarProgress = 75;
                     //uncomment to pitch error here
                     //int i = 0;
                     //int text = 15 / i;
-
+                    ProgressBarTitle = "Saving Events...";
                     var numEvents = EventService.SaveEvents(eventData.data);
-
+                    ProgressBarProgress = 90;
                     Events = EventService.GetAllEvents();
-
                     EventsLoaded = true;
                 }
                 catch
@@ -416,8 +484,15 @@ namespace Acosta.Xam.POC.ViewModels
                 }
             }
 
+            ProgressBarTitle = "Events Loaded!";
+            ProgressBarProgress = 100;
 
+            if(ProductsLoaded && EventsLoaded)
+            {
+                await _navigationService.Navigate<ProductsViewModel>();
+            }
         }
+
 
         #endregion
 
