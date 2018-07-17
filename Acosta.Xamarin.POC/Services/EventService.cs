@@ -21,6 +21,19 @@ namespace Acosta.Xam.POC.Services
 
         public List<Event> GetAllEvents() => _realm.All<Event>().ToList();
 
+        public int SaveEvent(Event _event)
+        {
+            try
+            {
+                _realm.Write(() => _realm.Add(_event));
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public int SaveEvents(List<Event> events)
         {
             events.ForEach(e => {

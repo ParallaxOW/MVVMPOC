@@ -60,13 +60,16 @@ namespace Acosta.Xam.POC.ViewModels
         {
             Products = ProductService.GetAllProducts();
             Events = EventService.GetAllEvents();
-			
+
             ProductsLoaded = (ProductCount > 0);
             EventsLoaded = (EventCount > 0);
-			
+
             //if we're connected lets check for data
             if (IsConnected)
             {
+                ProgressBarTitle = "Syncing...";
+                await Task.Delay(100);
+
                 //if either the products or events aren't loaded, lets go get them.
                 if (!ProductsLoaded || !EventsLoaded)
                 {
@@ -77,65 +80,84 @@ namespace Acosta.Xam.POC.ViewModels
                         try
                         {
                             if (Products == null) Products = new List<Product>();
-
-                           
                             var productData = await DataRetrievalService.GetProductData();
+                            ProgressBarProgress = 10;
+                            await Task.Delay(100);
 
-                            ProgressBarProgress = 25;
                             //uncomment to pitch error here
                             //int i = 0;
                             //int text = 15 / i;
+
                             ProgressBarTitle = "Saving Products...";
-                            var numProducts = ProductService.SaveProducts(productData.data);
-                            
-                            ProgressBarProgress = 40;
+
+                            int progress = 10;
+                            var numProducts = 0;
+                            foreach (Product p in productData.data)
+                            {
+                                numProducts = numProducts + ProductService.SaveProduct(p);
+                                if (numProducts % 25 == 0)
+                                {
+                                    progress++;
+                                    ProgressBarProgress = progress;
+                                    await Task.Delay(10);
+                                }
+                            }
+
+                            await Task.Delay(100);
                             Products = ProductService.GetAllProducts();
                             ProductsLoaded = true;
                         }
                         catch
                         {
                             //if we're in error, set the message, isnoterror and bail, we can't do any more.
-
                             ErrorMessage = "We couldn't load that.";
                             IsNotError = false;
                             return;
                         }
                     }
                     ProgressBarTitle = "Products Loaded!";
-                    ProgressBarProgress = 50;
-
+                    await Task.Delay(250);
 
                     if (!EventsLoaded)
                     {
                         ProgressBarTitle = "Retrieving Events...";
+                        ProgressBarProgress = 50;
                         try
                         {
                             if (Events == null) Events = new List<Event>();
-                            
                             var eventData = await DataRetrievalService.GetEventData();
-                            
-                            ProgressBarProgress = 75;
-                            //uncomment to pitch error here
-                            //int i = 0;
-                            //int text = 15 / i;
                             ProgressBarTitle = "Saving Events...";
-                            var numEvents = EventService.SaveEvents(eventData.data);
-                            
-                            ProgressBarProgress = 90;
+
+                            int progress = 50;
+                            var numEvents = 0;
+                            foreach (Event e in eventData.data)
+                            {
+                                numEvents = numEvents + EventService.SaveEvent(e);
+                                if (numEvents % 25 == 0)
+                                {
+                                    progress++;
+                                    ProgressBarProgress = progress;
+                                    await Task.Delay(10);
+                                }
+                            }
                             Events = EventService.GetAllEvents();
                             EventsLoaded = true;
+                            ProgressBarTitle = "Events Loaded.";
+                            ProgressBarProgress = 100;
+                            await Task.Delay(100);
                         }
                         catch
                         {
                             //if we're in error, set the message, isnoterror and bail, we can't do any more.
-                            ErrorMessage = "We couldn't load that.";
+                            //ErrorMessage = "We couldn't load that.";
                             IsNotError = false;
                             return;
                         }
                     }
-
-                    ProgressBarTitle = "Events Loaded!";
+                    ProgressBarTitle = "Data Loaded!";
                     ProgressBarProgress = 100;
+
+                    await Task.Delay(1000);
 
                     if (ProductsLoaded && EventsLoaded)
                     {
@@ -147,9 +169,11 @@ namespace Acosta.Xam.POC.ViewModels
                     //everything's loaded, lets ski-daddle!
                     ProgressBarProgress = 100;
                     ProgressBarTitle = "Data Loaded!";
+                    await Task.Delay(2000);
                     await _navigationService.Navigate<ProductsViewModel>();
                 }
             }
+            
             base.ViewAppeared();
         }
 
@@ -427,73 +451,140 @@ namespace Acosta.Xam.POC.ViewModels
         /// <returns></returns>
         private async Task LoadData()
         {
-            if (!ProductsLoaded)
+            Products = ProductService.GetAllProducts();
+            Events = EventService.GetAllEvents();
+
+            ProductsLoaded = (ProductCount > 0);
+            EventsLoaded = (EventCount > 0);
+
+            //if we're connected lets check for data
+            if (IsConnected)
             {
-                try
+                ProgressBarTitle = "Syncing...";
+                await Task.Delay(500);
+
+                //if either the products or events aren't loaded, lets go get them.
+                if (!ProductsLoaded || !EventsLoaded)
                 {
-                    if (Products == null) Products = new List<Product>();
-                    
-                    ProgressBarTitle = "Retrieving Products...";
-                    var productData = await DataRetrievalService.GetProductData();
-                    ProgressBarProgress = 25;
-                    //uncomment to pitch error here
-                    //int i = 0;
-                    //int text = 15 / i;
-                    ProgressBarTitle = "Saving Products...";
-                    var numProducts = ProductService.SaveProducts(productData.data);
-                    ProgressBarProgress = 40;
-                    Products = ProductService.GetAllProducts();
-                    ProductsLoaded = true;
-                }
-                catch
-                {
-                    //if we're in error, set the message, isnoterror and bail, we can't do any more.
-                    
-                    ErrorMessage = "We couldn't load that.";
-                    IsNotError = false;
-                    return;
-                }
-            }
-            ProgressBarTitle = "Products Loaded!";
-            ProgressBarProgress = 50;
+                    //something's not loaded, lets go get it.  
+                    if (!ProductsLoaded)
+                    {
+                        ProgressBarTitle = "Retrieving Products...";
+                        try
+                        {
+                            if (Products == null) Products = new List<Product>();
 
 
-            if (!EventsLoaded)
-            {
-                try
-                {
-                    if (Events == null) Events = new List<Event>();
-                    ProgressBarTitle = "Retrieving Events...";
-                    var eventData = await DataRetrievalService.GetEventData();
-                    ProgressBarProgress = 75;
-                    //uncomment to pitch error here
-                    //int i = 0;
-                    //int text = 15 / i;
-                    ProgressBarTitle = "Saving Events...";
-                    var numEvents = EventService.SaveEvents(eventData.data);
-                    ProgressBarProgress = 90;
-                    Events = EventService.GetAllEvents();
-                    EventsLoaded = true;
-                }
-                catch
-                {
-                    //if we're in error, set the message, isnoterror and bail, we can't do any more.
-                    ErrorMessage = "We couldn't load that.";
-                    IsNotError = false;
-                    return;
-                }
-            }
+                            var productData = await DataRetrievalService.GetProductData();
 
-            ProgressBarTitle = "Events Loaded!";
-            ProgressBarProgress = 100;
+                            ProgressBarProgress = 10;
+                            await Task.Delay(500);
+                            //uncomment to pitch error here
+                            //int i = 0;
+                            //int text = 15 / i;
+                            ProgressBarTitle = "Saving Products...";
+                            //var numProducts = ProductService.SaveProducts(productData.data);
 
-            if(ProductsLoaded && EventsLoaded)
-            {
-                await _navigationService.Navigate<ProductsViewModel>();
+                            int progress = 10;
+                            var numProducts = 0;
+                            foreach (Product p in productData.data)
+                            {
+
+                                numProducts = numProducts + ProductService.SaveProduct(p);
+
+                                if (numProducts % 25 == 0)
+                                {
+                                    progress++;
+                                    ProgressBarProgress = progress;
+                                    await Task.Delay(10);
+                                }
+                            }
+
+                            await Task.Delay(500);
+                            Products = ProductService.GetAllProducts();
+                            ProductsLoaded = true;
+                        }
+                        catch
+                        {
+                            //if we're in error, set the message, isnoterror and bail, we can't do any more.
+
+                            ErrorMessage = "We couldn't load that.";
+                            IsNotError = false;
+                            return;
+                        }
+                    }
+                    ProgressBarTitle = "Products Loaded!";
+                    await Task.Delay(500);
+
+                    if (!EventsLoaded)
+                    {
+                        ProgressBarTitle = "Retrieving Events...";
+                        ProgressBarProgress = 50;
+                        try
+                        {
+                            if (Events == null) Events = new List<Event>();
+
+                            var eventData = await DataRetrievalService.GetEventData();
+
+                            ProgressBarProgress = 75;
+                            //uncomment to pitch error here
+                            //int i = 0;
+                            //int text = 15 / i;
+                            ProgressBarTitle = "Saving Events...";
+                            //var numEvents = EventService.SaveEvents(eventData.data);
+
+                            int progress = 50;
+                            var numEvents = 0;
+                            foreach (Event e in eventData.data)
+                            {
+
+                                numEvents = numEvents + EventService.SaveEvent(e);
+
+                                if (numEvents % 25 == 0)
+                                {
+                                    progress++;
+                                    ProgressBarProgress = progress;
+                                    await Task.Delay(10);
+                                }
+                            }
+                            Events = EventService.GetAllEvents();
+                            EventsLoaded = true;
+                        }
+                        catch
+                        {
+                            //if we're in error, set the message, isnoterror and bail, we can't do any more.
+                            ErrorMessage = "We couldn't load that.";
+                            IsNotError = false;
+                            return;
+                        }
+                    }
+
+                    ProgressBarTitle = "Events Loaded!";
+                    ProgressBarProgress = 100;
+
+                    await Task.Delay(1500);
+
+                    if (ProductsLoaded && EventsLoaded)
+                    {
+                        await _navigationService.Navigate<ProductsViewModel>();
+                    }
+                }
+                else if (ProductsLoaded && EventsLoaded)
+                {
+                    //everything's loaded, lets ski-daddle!
+                    ProgressBarProgress = 100;
+                    ProgressBarTitle = "Data Loaded!";
+                    await Task.Delay(1500);
+                    await _navigationService.Navigate<ProductsViewModel>();
+                }
             }
         }
 
-
+        public void ValidateConnectivity()
+        {
+            IsConnected = _connectivityService.IsConnected();
+            this.ErrorMessage = (!IsConnected ? Constants.CONNECT_INTERNET_MSG : String.Empty);
+        }
         #endregion
 
     }

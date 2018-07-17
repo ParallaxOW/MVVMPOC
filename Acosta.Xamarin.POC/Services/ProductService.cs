@@ -22,6 +22,19 @@ namespace Acosta.Xam.POC.Services
 
         public List<Product> GetAllProducts() => _realm.All<Product>().ToList();
 
+        public int SaveProduct(Product product)
+        {
+            try
+            {
+                _realm.Write(() => _realm.Add(product));
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public int SaveProducts(List<Product> products)
         {
             products.ForEach(x => {
